@@ -5,6 +5,7 @@ import methods from 'methods';
 import methodOverride from 'method-override';
 
 import api from './api/routes/index';
+import './api/auth/passport';
 
 const isProduction = process.env.NODE_ENV === 'production';
 

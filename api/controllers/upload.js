@@ -32,19 +32,16 @@ export const upload = (req, res, next) => {
         if(err) return next(err);
 
         if(!checkValidInput(info)){
-          return res.status(400).json({error: "Invalid file input"})
+          return res.status(400).json({errors: {error: "Invalid file input"}})
         }
         // generate random filename and write image to filesystem
-        let generatedName = `./uploads/${generateRandomName()}.${info.format}`;
+        const generatedName = `./uploads/${generateRandomName()}.${info.format}`;
+        const url = generatedName.replace(/./, '')
         fs.writeFile(generatedName, data, function(err){if(err) next(err)});
 
-        // convert buffer to base64 string and send as json response
-        let base64Image = Buffer.from(data).toString('base64');
-        return res.json({data: base64Image, info: info})
+        // convert buffer to base64 string, then send buffer and url to image  as json response
+        const base64Image = Buffer.from(data).toString('base64');
+        return res.json({data: base64Image, imageUrl: url, info: info})
       })
   })
 }
-
-
-
-
