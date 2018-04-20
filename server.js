@@ -12,7 +12,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const app = express();
 
-app.use(logger('dev'));
+if(process.env.NODE_ENV !== 'test'){app.use(logger('dev'));}
 app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -56,3 +56,5 @@ app.set('port', process.env.PORT || 5000);
 const server = app.listen(app.get('port'), () => {
   console.log(`Server started...\nListening on port ${server.address().port}`)
 })
+
+export default app;
