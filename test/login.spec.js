@@ -27,6 +27,7 @@ describe('Auth', function(){
         .post('/api/login')
         .send(user)
         .end((error, response) => {
+          expect(error).to.be.null;
           expect(response.body.errors).to.be.undefined;
           expect(response.status).to.equal(200);
           expect(response.body).to.be.an('object');

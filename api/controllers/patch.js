@@ -4,15 +4,12 @@ import patchObject from '../helpers/patchObject.json';
 import {addToArray, filterArraById} from '../helpers/helper_functions';
 
 export const getOriginalObject = (req, res, next) => {
-  if(patchObject.length < 1) {
-    return res.status(200).json({message: "No objects in patch document. Please create some!"})
-  }
   return res.status(200).json(patchObject);
 }
 
 export const addToOriginalObject = (req, res, next) => {
     if(typeof req.body.name === 'undefined' || typeof req.body.description === 'undefined') {
-    return res.status(400).json({message: "request body cannot be empty"})
+    return res.status(400).json({message: "request body is incomplete!"})
   }
   return res.status(201).json(addToArray(patchObject, req.body))
 }

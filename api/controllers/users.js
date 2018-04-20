@@ -24,9 +24,9 @@ export const login = (req, res, next) => {
 
   passport.authenticate('local', {session: false}, (err, user, info)=> {
     if(err) return next(err);
-    if(user){
-      user.token = generateJWT(user)
-      return res.json({token: user.token, username: user.username})
-    }
+   
+    user.token = generateJWT(user)
+    return res.json({token: user.token, username: user.username})
+    
   })(req, res, next)
 }

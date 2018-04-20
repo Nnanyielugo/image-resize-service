@@ -2,26 +2,7 @@ import sharp from 'sharp';
 import request from 'request';
 import fs from 'fs';
 
-function generateRandomName(){
-  let characterBank = 'abcdefghijklmnopqrstuvwxyz1234567890';
-  let date = new Date().getTime();
-  let finishedString = 'file-';
-
-  for(let i = 0; i < 8; i++){
-    finishedString += characterBank[parseInt(Math.random()*26)]
-  } 
-  
-  return (finishedString += date)
-}
-
-function checkValidInput(input){
-  let response = false;
-  if(input.format === 'jpeg' || input.format === 'png' || input.format === 'jpg') {
-    response = true;
-  }
-
-  return response;
-}
+import { generateRandomName } from '../helpers/helper_functions';
 
 export const upload = (req, res, next) => {
   const imageSrc = req.body.imageSrc;
@@ -31,9 +12,6 @@ export const upload = (req, res, next) => {
       .toBuffer( (err, data, info) =>{
         if(err) return next(err);
 
-        if(!checkValidInput(info)){
-          return res.status(400).json({errors: {error: "Invalid file input"}})
-        }
         // generate random filename and write image to filesystem
         const generatedName = `./uploads/${generateRandomName()}.${info.format}`;
         const url = generatedName.replace(/./, '')
