@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Object one",
+    "description": "First 0rigninal object for json patching"
+  },
+  {
+    "id": 2,
+    "name": "Object two",
+    "description": "Second origninal object for json patching"
+  },
+  {
+    "id": 3,
+    "name": "Object three",
+    "description": "Third origninal object for json patching"
+  }
+]

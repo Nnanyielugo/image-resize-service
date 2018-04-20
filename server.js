@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride());
 app.use('/api', api);
 
-app.get('*', (req, res) => {
-  res.send("Hello fuckers!")
-})
+// app.get('*', (req, res) => {
+//   res.send("Hello fuckers!")
+// })
 
 // error handlers
 app.use((req, res, next) => {
