@@ -1,5 +1,5 @@
-node_modules/
-uploads/
-config/
-.nyc_output/
-coverage/
+image-resize/node_modules/
+image-resize/uploads/
+image-resize/config/
+image-resize/.nyc_output/
+image-resize/coverage/
