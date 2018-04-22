@@ -5,19 +5,21 @@ import { getOriginalObject, addToOriginalObject, patchOriginalObject } from '../
 const router = Router();
 
 /**
- * @param {array of objects} res 
+ * @param {Array} res
  */
 router.get('/', auth.required, getOriginalObject);
 
 /**
- * @param {name, description} req
- * @param {array of objects containing newly created object} res
+ * @param {Object} req.body
+ * @param {String} req.body.name
+ * @param {String} req.body.description
  */
 router.post('/', auth.required, addToOriginalObject);
 
 /**
- * @param {name, description} req
- * @param {updated object}
+ * @param {Object} req.body
+ * @param {String} req.body.name
+ * @param {String} req.body.description
  */
 router.patch('/:id', auth.required, patchOriginalObject)
 

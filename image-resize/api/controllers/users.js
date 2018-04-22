@@ -14,7 +14,7 @@ export const generateJWT = (user) => {
 }
 
 export const login = (req, res, next) => {
-  console.log(req.body);
+  
   if(!req.body.username){
     return res.status(422).json({errors: {error: "Username can't be blank!"}})
   }

@@ -5,8 +5,9 @@ import { auth } from '../auth/auth';
 const router = Router();
 
 /**
- * @param {imageSrc} req 
- * @param {base64image, imagePath} res 
+ * @param {Object} req.body
+ * @param {String} req.body.imageSrc 
+ * @param {Object} res 
  */
 router.post('/', auth.required, upload)
 
